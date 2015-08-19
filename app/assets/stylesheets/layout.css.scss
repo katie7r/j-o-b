@@ -1,3 +1,10 @@
+//* Misc
+// TODO: move when I have a better idea of what I will have
+.sr {
+  @include hide-text;
+  position: fixed;
+}
+
 //* General
 
 html, body {

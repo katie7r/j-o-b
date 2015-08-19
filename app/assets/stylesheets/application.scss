@@ -1,5 +1,5 @@
 // Normalize.css
-@import "base/normalize";
+@import "import/normalize";
 
 // Bourbon, Neat, & Bitters
 @import "bourbon";
@@ -8,4 +8,5 @@
 @import "base/base";
 
 // Additional
+@import "import/typicons.min";
 @import "layout";
