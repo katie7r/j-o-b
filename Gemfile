@@ -6,7 +6,9 @@ gem 'pg'
 gem 'thin'
 
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass', '~> 3.3.5'
+# gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bourbon'
+gem 'neat'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -18,6 +20,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the A
 
 gem 'autoprefixer-rails'
 gem 'devise'
+gem 'high_voltage', '~> 2.4.0'
 gem 'pundit'
 gem 'redcarpet'
 gem 'slim-rails'
