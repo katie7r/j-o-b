@@ -15,6 +15,10 @@ html, body {
   @include outer-container;
 }
 
+#yield {
+  @include pad(default);
+}
+
 // For sticky footer
 
 #container {
@@ -183,6 +187,8 @@ header.navigation {
   // Sub menus
 
   li.more.nav-link {
+
+    color: $navigation-color;
     padding-right: 0;
 
     @include media($horizontal-bar-mode) {
