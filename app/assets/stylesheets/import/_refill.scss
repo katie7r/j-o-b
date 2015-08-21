@@ -1,112 +1,100 @@
-//* Misc
-// TODO: move when I have a better idea of what I will have
-.sr {
-  @include hide-text;
-  position: fixed;
-}
+//* Button Groups
 
-.caps {
-  text-transform: capitalize;
-}
+.button-group {
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $base-line-height: 1.5em !default;
+  $base-spacing: 1.5em !default;
+  $base-font-size: 1em !default;
+  $base-background-color: white !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $large-screen: em(860) !default;
+  $base-font-color: $dark-gray !default;
+  $button-group-background: $base-background-color;
+  $button-group-color: lighten($base-font-color, 30%);
+  $button-group-border: 1px solid silver;
+  $button-group-inner-border: 1px solid lighten(silver, 18%);
+  $button-group-background-checked: $action-color;
+  $button-group-color-checked: white;
+  $button-group-border-checked: darken($button-group-background-checked, 15%);
 
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
-
-.markdown {
-  display: inline-block;
-
-  ul {
-    list-style-type: disc;
-    margin-bottom: $small-spacing;
-    padding-left: $base-spacing;
+  input {
+    display: none;
   }
 
-  ol {
-    list-style-type: decimal;
-    margin-bottom: $small-spacing;
-    padding-left: $base-spacing;
-  }
-}
+  label {
+    margin-bottom: 0;
 
-// .center {
-//   display: block;
-//   text-align: center;
-//   @include margin(null auto null auto);
-// }
+    @include media($large-screen) {
+      float: left;
+    }
 
-.whole {
-  @include span-columns(12);
-  @include clearfix;
-}
-
-.half {
-  @include span-columns(6);
-}
-
-.two-thirds {
-  @include span-columns(8)
-}
-
-.one-third {
-  @include span-columns(4);
-}
-
-.three-fourths {
-  @include span-columns(9);
-}
-
-.one-fourth {
-  @include span-columns(3);
-}
-
-.half, .two-thirds, .one-third, .three-fourths, .one-fourth {
-  // TODO: Maybe some sort of row/span approach
-  &.end {
-    @include omega;
-  }
-}
-
-//* General
-
-html, body {
- height: 100%;
-}
-
-.wrapper {
-  @include outer-container;
-}
-
-#yield {
-  @include pad(default);
-}
-
-// For sticky footer
-
-#container {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -4em;
-  &:after {
-    content: "";
-    display: block;
-
-    &, .footer {
-      height: 17em;
+    .button-group-item {
+      background: $button-group-background;
+      border-left: $button-group-border;
+      border-radius: 0;
+      border-right: $button-group-border;
+      color: $button-group-color;
+      cursor: pointer;
+      display: inline-block;
+      font-size: $base-font-size;
+      font-weight: normal;
+      line-height: 1;
+      padding: 0.75em 1em;
+      width: 100%;
 
       @include media($large-screen) {
-        height: 4em;
+        border-bottom: $button-group-border;
+        border-left: 0;
+        border-right: $button-group-inner-border;
+        border-top: $button-group-border;
+        width: auto;
       }
+
+      &:focus,
+      &:hover {
+        background-color: darken($button-group-background, 3%);
+      }
+    }
+
+    &:first-child .button-group-item {
+      border-top-left-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+      border-top: $button-group-border;
+
+      @include media($large-screen) {
+        border-bottom-left-radius: $base-border-radius;
+        border-left: $button-group-border;
+        border-top-left-radius: $base-border-radius;
+        border-top-right-radius: 0;
+      }
+    }
+
+    &:last-child .button-group-item {
+      border-bottom-left-radius: $base-border-radius;
+      border-bottom-right-radius: $base-border-radius;
+      border-bottom: $button-group-border;
+
+      @include media($large-screen) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: $base-border-radius;
+        border-right: $button-group-border;
+        border-top-right-radius: $base-border-radius;
+      }
+    }
+
+    input:checked + .button-group-item {
+      background: $button-group-background-checked;
+      border: 1px solid $button-group-border-checked;
+      box-shadow: inset 0 1px 2px darken($button-group-background-checked, 10%);
+      color: $button-group-color-checked;
     }
   }
 }
 
-//* Nav
+
+//* Centered Nav
 
 .centered-navigation {
   $base-border-radius: 3px !default;
@@ -373,7 +361,213 @@ html, body {
 }
 
 
-//* Footer
+//* Expander
+
+.expander {
+  $base-font-size: 1em !default;
+  $base-line-height: 1.5em !default;
+  $base-spacing: 1.5em !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $light-gray: #DDD !default;
+  $base-font-color: $dark-gray !default;
+  $expander-arrow-width: 0.7em;
+  $expander-toggle-size: 1em;
+  $expander-toggle-arrow-size: $expander-toggle-size;
+  $expander-toggle-margin: 1em;
+
+  width: 60%;
+
+  .expander-trigger {
+    @include user-select(none);
+    border-bottom: 1px solid $light-gray;
+    color: $action-color;
+    cursor: pointer;
+    display: block;
+    font-size: $expander-toggle-size;
+    margin-bottom: $expander-toggle-size;
+    padding-bottom: $expander-toggle-size / 4;
+    text-decoration: none;
+
+    &:before {
+      font-size: $expander-arrow-width;
+      content: "\25BC";
+      margin-right: 0.5em;
+    }
+  }
+
+  .expander-content p {
+    color: $base-font-color;
+    line-height: $base-line-height;
+  }
+
+  .expander-hidden {
+    &:before {
+      font-size: $expander-arrow-width;
+      content: "\25BA";
+    }
+  }
+
+  .expander-hidden + .expander-content {
+    display: none;
+  }
+}
+
+
+//* Flash
+
+@mixin flash($color) {
+  background-color: $color;
+  color: darken($color, 60%);
+  display: block;
+  margin-bottom: $base-spacing / 2;
+  padding: $base-spacing / 2;
+  text-align: center;
+
+  a {
+    color: darken($color, 70%);
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      color: darken($color, 90%);
+    }
+  }
+}
+
+.flash {
+  $base-spacing: 1.5em !default;
+  $alert-color: #fff6bf !default;
+  $error-color: #fbe3e4 !default;
+  $notice-color: #e5edf8 !default;
+  $success-color: #e6efc2 !default;
+
+  &.flash-alert {
+    @include flash($alert-color);
+  }
+
+  &.flash-error {
+    @include flash($error-color);
+  }
+
+  &.flash-notice {
+    @include flash($notice-color);
+  }
+
+  &.flash-success {
+    @include flash($success-color);
+  }
+}
+
+
+//* Flex Boxes
+
+$flex-box-color: transparentize($base-font-color, 0.3);
+
+.flex-boxes {
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $dark-gray: #333 !default;
+  $light-gray: #DDD !default;
+  $base-font-color: $dark-gray !default;
+  $flex-box-border-color: $light-gray;
+  $flex-box-border: 1px solid $flex-box-border-color;
+  $flex-box-background: lighten($light-gray, 10%);
+  $flex-box-gutter: 0.4em;
+  $flex-box-width: 18em;
+  // $flex-box-color: transparentize($base-font-color, 0.3);
+  $flex-box-top-colors:
+    tomato,
+    #72BFBF,
+    #92B1E3,
+    #E3D743,
+    #CCC,
+    #F6C05C;
+
+    @include clearfix;
+    @include display(flex);
+    @include justify-content(center);
+    @include align-items(stretch);
+    @include flex-wrap(wrap);
+    clear: both;
+    text-align: center;
+
+  .flex-box {
+    @include transition (all 0.2s ease-in-out);
+    @include flex(2 2 15em);
+    @include align-self(stretch);
+    background: $flex-box-background;
+    border-radius: $base-border-radius;
+    box-shadow: inset 0 0 1px $flex-box-border-color, 0 2px 4px darken($base-background-color, 10%);
+    display: block;
+    margin: $flex-box-gutter;
+    padding: 2em 2em 3em 2em;
+    text-decoration: none;
+
+    @for $i from 1 to 7 { // assign colors from $flex-box-top-colors list
+      &:nth-child(#{$i}) {
+        $color-from-list: nth($flex-box-top-colors, $i);
+        border-top: 6px solid $color-from-list;
+
+        &:focus,
+        &:hover {
+          background-color: transparentize($color-from-list, 0.9);
+        }
+      }
+    }
+
+    img {
+      display: block;
+      height: 3em;
+      margin: 0 auto 1em;
+      opacity: 0.4;
+    }
+
+    .flex-title {
+      color: $flex-box-color;
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      color: transparentize($flex-box-color, 0.1);
+      line-height: 1.5em;
+      margin: auto;
+    }
+  }
+
+  .flex-box-big {
+    @include flex(1 1 40em);
+  }
+}
+
+
+//* Footer (sticky)
+  /* Renamed .wrapper-for-content-outside-of-footer -> #container and .footer-2 -> .footer */
+
+html, body {
+ height: 100%;
+}
+
+#container {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+
+  &:after {
+    content: "";
+    display: block;
+  }
+}
+
+.footer, #container:after {
+  height: 17em;
+
+  @include media($large-screen) {
+    height: 4em;
+  }
+}
 
 .footer {
   $base-spacing: 1.5em !default;
@@ -398,10 +592,10 @@ html, body {
       float: left;
       margin-bottom: 0;
     }
+  }
 
-    img {
-      height: 1.6em;
-    }
+  .footer-logo img {
+    height: 1.6em;
   }
 
   ul {
@@ -415,25 +609,25 @@ html, body {
       margin-left: 1em;
       margin-bottom: 0;
     }
+  }
 
-    li {
-      list-style: none;
-      padding-right: 1em;
+  ul li {
+    list-style: none;
+    padding-right: 1em;
 
-      @include media($large-screen) {
-        display: inline;
-        text-align: left;
-      }
+    @include media($large-screen) {
+      display: inline;
+      text-align: left;
+    }
+  }
 
-      a {
-        color: $footer-link-color;
-        text-decoration: none;
+  ul li a {
+    color: $footer-link-color;
+    text-decoration: none;
 
-        &:focus,
-        &:hover {
-          color: transparentize($footer-color, 0);
-        }
-      }
+    &:focus,
+    &:hover {
+      color: transparentize($footer-color, 0);
     }
   }
 
@@ -478,47 +672,4 @@ html, body {
       }
     }
   }
-}
-
-//* Flash
-
-$base-spacing: 1.5em !default;
-$alert-color: #fff6bf !default;
-$error-color: #fbe3e4 !default;
-$notice-color: #e5edf8 !default;
-$success-color: #e6efc2 !default;
-
-@mixin flash($color) {
-  background-color: $color;
-  color: darken($color, 60%);
-  display: block;
-  margin-bottom: $base-spacing / 2;
-  padding: $base-spacing / 2;
-  text-align: center;
-
-  a {
-    color: darken($color, 70%);
-    text-decoration: underline;
-
-    &:focus,
-    &:hover {
-      color: darken($color, 90%);
-    }
-  }
-}
-
-.flash-alert {
-  @include flash($alert-color);
-}
-
-.flash-error {
-  @include flash($error-color);
-}
-
-.flash-notice {
-  @include flash($notice-color);
-}
-
-.flash-success {
-  @include flash($success-color);
 }

@@ -1,10 +1,4 @@
-$ ->
-  # Expander for posting filters
-  # expanderTrigger = $('#js-expander-trigger')
-  # expanderContent = $('#js-expander-content')
-  $('#js-expander-trigger').on 'click', ->
-    $(this).toggleClass 'expander-hidden'
-    # return
+ready = ->
 
   # Filter postings on index
   $('#posting-filters input').on 'change', ->
@@ -36,3 +30,6 @@ $ ->
   # Convert suchTheString to such-the-string
   uncamel = (camelCaseString) ->
     camelCaseString.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
