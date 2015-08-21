@@ -80,6 +80,7 @@ class Posting < ActiveRecord::Base
 
   # Misc
 
+  # ?
   def self.priorities_at_least(priority)
     minimum_priority  = self.priorities[priority]
     return self.priorities.select{ |k, v| v >= minimum_priority }

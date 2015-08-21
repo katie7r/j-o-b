@@ -15,7 +15,7 @@ module ApplicationHelper
     @renderer ||= Redcarpet::Render::HTML.new(options)
     @markdown ||= Redcarpet::Markdown.new(@renderer, extensions)
 
-    @markdown.render(text).html_safe
+    "<div class='markdown'>#{@markdown.render(text)}</div>".html_safe
   end
 
   # Helper for easier construction of typicon icons with screenreader text

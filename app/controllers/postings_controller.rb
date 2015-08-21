@@ -44,8 +44,7 @@ class PostingsController < ApplicationController
   end
 
   def find_and_authorize_posting
-    @posting = Posting.find params[:id]
-    # @posting = current_user.postings.find params[:id]
+    @posting = current_user.postings.find params[:id]
     authorize @posting
   end
 

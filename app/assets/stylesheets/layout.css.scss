@@ -5,10 +5,39 @@
   position: fixed;
 }
 
-.caps,
-select option {
+.caps {
   text-transform: capitalize;
 }
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.markdown {
+  display: inline-block;
+
+  ul {
+    list-style-type: disc;
+    margin-bottom: $small-spacing;
+    padding-left: $base-spacing;
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin-bottom: $small-spacing;
+    padding-left: $base-spacing;
+  }
+}
+
+// .center {
+//   display: block;
+//   text-align: center;
+//   @include margin(null auto null auto);
+// }
 
 .whole {
   @include span-columns(12);
