@@ -7,28 +7,30 @@
       = typicon('at', '@')
       = posting.company
 
-    / TODO: friday (badges)
-    p
-      | Priority:
-      strong.caps = posting.priority
-    p
-      | Status:
-      strong.caps = posting.status
-    p
-      | Remote:
-      strong.caps = yes_or_no posting.remote?
-    p
-      | Full-Time:
-      strong.caps = yes_or_no posting.full_time?
+    .stats
+      ul
+        li
+          span Priority
+          = posting.priority.titleize
+        li
+          span Status
+          = posting.status.titleize
+        li
+          span Remote
+          = yes_or_no posting.remote?
+        li
+          span Full Time
+          = yes_or_no posting.full_time?
 
-    - if posting.description
-      h3 Description:
-      p = markdown posting.description
+    .details
+      - if posting.description.present?
+        h3 Description:
+        fieldset = markdown posting.description
 
-    - if posting.requirements
-      h3 Requirements:
-      p = markdown posting.requirements
+      - if posting.requirements.present?
+        h3 Requirements:
+        fieldset = markdown posting.requirements
 
-    - if posting.notes
-      h3 Notes:
-      p = markdown posting.notes
+      - if posting.notes.present?
+        h3 Notes:
+        fieldset = markdown posting.notes

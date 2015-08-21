@@ -26,6 +26,6 @@ module ApplicationHelper
   end
 
   def yes_or_no(condition)
-    condition ? 'yes' : 'no'
+    condition ? 'Yes' : 'No'
   end
 end

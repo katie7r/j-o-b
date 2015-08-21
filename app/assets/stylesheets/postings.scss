@@ -11,7 +11,31 @@
 //* Flex Boxes
 
 .flex-boxes {
-  h2, h3, .markdown {
+  h2, .markdown {
     color: transparentize($flex-box-color, 0.1);
+  }
+
+  .stats {
+    border-bottom: 1px solid transparentize($base-font-color, 0.8);
+    margin-bottom: $gutter;
+    padding-bottom: $gutter;
+
+    span {
+      color: $flex-box-color;
+    }
+
+    li {
+      color: transparentize($flex-box-color, 0.1);;
+      float: none;
+      display: inline-block;
+    }
+  }
+
+  .details {
+    text-align: left;
+
+    h3 {
+      color: $flex-box-color;
+    }
   }
 }

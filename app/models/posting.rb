@@ -26,7 +26,7 @@ class Posting < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :job_title, :job_url, :user_id, presence: true
+  validates :company, :job_title, :job_url, :user_id, presence: true
 
   # Sorting
 
