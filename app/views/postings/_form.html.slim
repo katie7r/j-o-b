@@ -1,0 +1,38 @@
+= form_for posting, id: 'posting-form' do |f|
+  fieldset.whole
+    = f.label :quickname
+    = f.text_field :quickname
+
+  fieldset.half
+    = f.label :job_title
+    = f.text_field :job_title, required: true
+
+    = f.label :job_url
+    = f.text_field :job_url, required: true
+
+  fieldset.half.end
+    = f.label :company
+    = f.text_field :company
+
+    = f.label :company_url
+    = f.text_field :company_url
+
+  fieldset.three-fourths
+    = f.label :description
+    = f.text_area :description
+
+    = f.label :requirements
+    = f.text_area :requirements
+
+    = f.label :notes
+    = f.text_area :notes
+
+  fieldset.one-fourth.end
+    = f.label :priority
+    = f.select :priority, options_for_select(Posting.priorities.keys, selected: posting.priority)
+
+    = f.label :status
+    = f.select :status, options_for_select(Posting.statuses.keys, selected: posting.status)
+
+  fieldset.one-fourth.end.center
+    =f.submit

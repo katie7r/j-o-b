@@ -13,7 +13,7 @@
 #  notes        :text
 #  remote       :boolean          default(FALSE)
 #  full_time    :boolean          default(TRUE)
-#  priority     :integer
+#  priority     :integer          default(0)
 #  status       :integer          default(0)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

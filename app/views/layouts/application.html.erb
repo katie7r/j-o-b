@@ -11,6 +11,8 @@
   <div id='container'>
     <%= render 'layouts/nav' %>
 
+    <%= render 'layouts/flash' unless flash.empty? %>
+
     <div id='yield' class='wrapper'>
       <%= yield %>
     </div>

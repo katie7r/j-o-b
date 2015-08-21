@@ -1,4 +1,22 @@
 module ApplicationHelper
+  def markdown(text)
+    options = {
+      filter_html:     true,
+      hard_wrap:       true,
+      link_attributes: { target: '_blank' },
+      space_after_headers: true
+    }
+
+    extensions = {
+      autolink:           true,
+      superscript:        true
+    }
+
+    @renderer ||= Redcarpet::Render::HTML.new(options)
+    @markdown ||= Redcarpet::Markdown.new(@renderer, extensions)
+
+    @markdown.render(text).html_safe
+  end
 
   # Helper for easier construction of typicon icons with screenreader text
   def typicon(icon_name, screenreader_text)

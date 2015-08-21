@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
   include HighVoltage::StaticPage
 
-  skip_after_action :verify_authorized, except: :index
-  skip_after_action :verify_policy_scoped, only: :index
+  skip_before_action :authenticate_user!
+  skip_after_action  :verify_authorized
+  skip_after_action  :verify_policy_scoped
 
 end

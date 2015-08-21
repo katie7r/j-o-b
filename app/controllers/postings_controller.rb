@@ -1,42 +1,56 @@
 class PostingsController < ApplicationController
+  before_filter :find_and_authorize_posting, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize_posting, only: [:index, :new, :create]
 
   def index
     @postings = policy_scope(Posting)
-    authorize Posting
   end
 
   def show
-    @posting = Posting.find params[:id]
-    authorize @posting
   end
 
   def new
-    authorize Posting
   end
 
   def create
-    authorize Posting
+    @posting = current_user.postings.build(posting_params)
+    if @posting.save!
+      redirect_to @posting
+    else
+      render :new
+    end
   end
 
   def edit
-    @posting = Posting.find params[:id]
-    authorize @posting
   end
 
   def update
-    @posting = Posting.find params[:id]
-    authorize @posting
+    if @posting.update(posting_params)
+      redirect_to @posting
+    else
+      render :edit
+    end
   end
 
   def destroy
-    posting = Posting.find params[:id]
-    authorize @posting
+    @posting.destroy
+    redirect_to postings_path, success: 'Posting destroyed.'
   end
 
   private
 
-  def postings_params
+  def posting_params
     params.require(:posting).permit(:quickname, :job_title, :job_url, :company, :company_url, :description, :requirements, :notes, :remote, :full_time, :priority, :status)
+  end
+
+  def find_and_authorize_posting
+    @posting = Posting.find params[:id]
+    # @posting = current_user.postings.find params[:id]
+    authorize @posting
+  end
+
+  def authorize_posting
+    authorize Posting
   end
 
 end

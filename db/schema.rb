@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150820071035) do
     t.text     "notes"
     t.boolean  "remote",       default: false
     t.boolean  "full_time",    default: true
-    t.integer  "priority"
+    t.integer  "priority",     default: 0
     t.integer  "status",       default: 0
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false

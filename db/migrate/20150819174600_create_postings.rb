@@ -11,7 +11,7 @@ class CreatePostings < ActiveRecord::Migration
       t.text :notes
       t.boolean :remote, default: false
       t.boolean :full_time, default: true
-      t.integer :priority
+      t.integer :priority, default: 0
       t.integer :status, default: 0
 
       t.timestamps null: false

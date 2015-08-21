@@ -9,12 +9,12 @@ class PostingPolicy < ApplicationPolicy
     signed_in?
   end
 
-  def show?
-    user_posting?
-  end
-
   def create?
     signed_in?
+  end
+
+  def show?
+    user_posting?
   end
 
   def update?
@@ -26,6 +26,6 @@ class PostingPolicy < ApplicationPolicy
   end
 
   def user_posting?
-    @posting.user_id == @user.id
+    @record.user_id == @user.id
   end
 end
