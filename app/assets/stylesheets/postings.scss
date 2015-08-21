@@ -11,13 +11,15 @@
 //* Flex Boxes
 
 .flex-boxes {
+  $flex-box-lighter-color: transparentize($flex-box-color, 0.1);
+
   h2, .markdown {
-    color: transparentize($flex-box-color, 0.1);
+    color: $flex-box-lighter-color;
   }
 
   .stats {
     border-bottom: 1px solid transparentize($base-font-color, 0.8);
-    margin-bottom: $gutter;
+    // margin-bottom: $gutter;
     padding-bottom: $gutter;
 
     span {
@@ -25,7 +27,7 @@
     }
 
     li {
-      color: transparentize($flex-box-color, 0.1);;
+      color: $flex-box-lighter-color;
       float: none;
       display: inline-block;
     }
@@ -34,8 +36,29 @@
   .details {
     text-align: left;
 
-    h3 {
+    h3, .expander .expander-trigger {
       color: $flex-box-color;
+    }
+
+    .expander {
+      @include fill-parent();
+      margin-top: $gutter / 2;
+
+      .expander-trigger {
+        margin-bottom: 0;
+
+        &.null {
+          color: $flex-box-lighter-color;
+
+          &:before {
+            color: rgba(0, 0, 0, 0);
+          }
+        }
+      }
+
+      .expander-content fieldset {
+        border-top: 0;
+      }
     }
   }
 }

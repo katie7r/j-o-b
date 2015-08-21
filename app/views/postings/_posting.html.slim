@@ -22,15 +22,28 @@
           span Full Time
           = yes_or_no posting.full_time?
 
+    / Simplify / dry this?
     .details
-      - if posting.description.present?
-        h3 Description:
-        fieldset = markdown posting.description
+      #description-details.expander
+        - if posting.description.present?
+          a.expander-trigger.expander-hidden Description
+          .expander-content
+            fieldset = markdown posting.description
+        -else
+          .expander-trigger.null Description (none)
 
-      - if posting.requirements.present?
-        h3 Requirements:
-        fieldset = markdown posting.requirements
+      #requirements-details.expander
+        - if posting.requirements.present?
+          a.expander-trigger.expander-hidden Requirements
+          .expander-content
+            fieldset = markdown posting.requirements
+        -else
+          .expander-trigger.null Requirements (none)
 
-      - if posting.notes.present?
-        h3 Notes:
-        fieldset = markdown posting.notes
+      #notes-details.expander
+        - if posting.notes.present?
+          a.expander-trigger.expander-hidden Notes
+          .expander-content
+            fieldset = markdown posting.notes
+        -else
+          .expander-trigger.null Notes (none)

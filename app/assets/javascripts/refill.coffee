@@ -1,6 +1,7 @@
+# Bourbon Refill Snippets
 ready = ->
 
-  # Nav menu (bourbon/refill)
+  # Nav menu
   menuToggle = $('#js-centered-navigation-mobile-menu').unbind()
   $('#js-centered-navigation-menu').removeClass 'show'
   menuToggle.on 'click', (e) ->
@@ -12,7 +13,7 @@ ready = ->
     return
 
   # Expander for posting filters
-  $('#js-expander-trigger').on 'click', ->
+  $('.expander-trigger').on 'click', ->
     $(this).toggleClass 'expander-hidden'
 
 $(document).ready(ready)
