@@ -19,9 +19,13 @@ module ApplicationHelper
   end
 
   # Helper for easier construction of typicon icons with screenreader text
-  def typicon(icon_name, screenreader_text)
+  def typicon(icon_name, text, screenreader_only = true)
     typcn  = "<span aria-hidden='true' class='typcn typcn-#{icon_name}'></span>"
-    typcn += "<span class='sr'>#{screenreader_text}</span>"
+    typcn += "<span class='#{'sr' if screenreader_only}'>#{text}</span>"
     return typcn.html_safe
+  end
+
+  def yes_or_no(condition)
+    condition ? 'yes' : 'no'
   end
 end

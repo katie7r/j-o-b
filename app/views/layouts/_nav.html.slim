@@ -17,7 +17,7 @@ header.centered-navigation[role='banner']
 
         -if current_user
           li.nav-link.more
-            / = typicon('user', 'User')
+            = typicon('user', 'User')
             a[href='javascript:void(0)'] = current_user.email
             ul.submenu
               li = link_to 'Edit Profile', edit_user_registration_path

@@ -1,5 +1,5 @@
 #posting-filters.expander
-  a#js-expander-trigger.expander-trigger[href='javascript:void(0)'] Job Posting Filters
+  a#js-expander-trigger.expander-trigger.expander-hidden Filters
   #js-expander-content.expander-content
 
     .three-fourths.left
@@ -11,7 +11,7 @@
         - Posting.priorities.keys.each do |priority|
           label
             input[name='priority' type='radio' value=priority]
-            span.button-group-item.caps = priority
+            span.button-group-item = priority.titleize
 
     .one-fourth.right.end
       h2 Remote/Local
@@ -35,7 +35,7 @@
         - Posting.statuses.keys.each do |status|
           label
             input[name='status' type='radio' value=status]
-            span.button-group-item.caps = status
+            span.button-group-item = status.titleize
 
           
     .one-fourth.right.end

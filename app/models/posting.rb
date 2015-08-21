@@ -34,49 +34,49 @@ class Posting < ActiveRecord::Base
     order('priority DESC')
   end
 
-  def self.by_status_asc
-    order('priority ASC')
-  end
-
-  def self.by_status_desc
-    order('priority DESC')
-  end
+  # def self.by_status_asc
+  #   order('priority ASC')
+  # end
+  #
+  # def self.by_status_desc
+  #   order('priority DESC')
+  # end
 
   # Filters
 
-  def self.unsubmitted
-    where(status: [0, 1, 2])
-  end
+  # def self.unsubmitted
+  #   where(status: [0, 1, 2])
+  # end
+  #
+  # def self.submitted
+  #   where(status: [3, 4])
+  # end
 
-  def self.submitted
-    where(status: [3, 4])
-  end
+  # # ?
+  # def self.prioritized(priority)
+  #   where(priority: priority)
+  # end
+  #
+  # # ?
+  # def self.prioritized_at_least(priority)
+  #   prioritized(priorities_at_least(priority))
+  # end
 
-  # ?
-  def self.prioritized(priority)
-    where(priority: priority)
-  end
-
-  # ?
-  def self.prioritized_at_least(priority)
-    prioritized(priorities_at_least(priority))
-  end
-
-  def self.remote
-    where(remote: true)
-  end
-
-  def self.local
-    where(remote: false)
-  end
-
-  def self.full_time
-    where(full_time: true)
-  end
-
-  def self.part_time
-    where(full_time: false)
-  end
+  # def self.remote
+  #   where(remote: true)
+  # end
+  #
+  # def self.local
+  #   where(remote: false)
+  # end
+  #
+  # def self.full_time
+  #   where(full_time: true)
+  # end
+  #
+  # def self.part_time
+  #   where(full_time: false)
+  # end
 
   # Misc
 
