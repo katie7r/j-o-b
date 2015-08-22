@@ -12,8 +12,12 @@ header.centered-navigation[role='banner']
           li.nav-link = link_to 'Sign In', new_user_session_path
 
         li.nav-link.logo
-          = link_to root_path, class: 'logo' do
-            img[src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png' alt='Logo Image']
+          a.logo[href="#{root_path}"]
+            #hexagon
+              .border
+              .hexagon
+                span J.O.B.
+          / img[src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png' alt='Logo Image']
 
         -if current_user
           li.nav-link.more

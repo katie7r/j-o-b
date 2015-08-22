@@ -40,6 +40,10 @@
   }
 }
 
+.one-fourth.end + .one-fourth.end {
+  margin-top: $small-spacing;
+}
+
 //* Badgery
 
 // TODO: friday
@@ -88,4 +92,93 @@
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+@mixin hexagon($color, $size) {
+  $half-size: $size / 2;
+  $quarter-size: $size / 4;
+
+  width: $size;
+	height: $half-size + ($size / 20);
+	background: $color;
+	// position: relative;
+	position: absolute;
+
+  &:before, &:after {
+    content: "";
+  	position: absolute;
+  	left: 0;
+  	width: 0;
+  	height: 0;
+  	border-left: $half-size solid transparent;
+  	border-right: $half-size solid transparent;
+  }
+
+  &:before {
+  	top: (-$quarter-size);
+  	border-bottom: $quarter-size solid $color;
+  }
+
+  &:after {
+  	bottom: (-$quarter-size);
+  	border-top: $quarter-size solid $color;
+  }
+}
+
+
+@mixin bordered-hexagon($color, $size, $border-color, $border-size) {
+  $border-size-mod2: abs($border-size - (ceil($border-size / 2) * 2));
+  $modded-border-size: $border-size + $border-size-mod2;
+  $border-hexagon-size: ($border-size * 2 + $border-size-mod2 + $size);
+
+  position: relative;
+
+  .border {
+    @include hexagon($border-color, $border-hexagon-size);
+    margin-top: (-$modded-border-size / 2);
+    margin-left: (-$modded-border-size);
+  }
+
+  .hexagon {
+    @include hexagon($color, $size);
+  }
+
+  .border, .hexagon {
+    display: inline-block;
+  }
+}
+
+@mixin hexagon-text {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+
+$hexagon-size: round($centered-navigation-height * 0.75);
+#hexagon {
+  $border-size: 5px;
+
+  font-size: 1em;
+  top: (-$centered-navigation-height / 4);
+
+  @include bordered-hexagon($action-color, $hexagon-size, $dark-gray, $border-size);
+
+  .hexagon span {
+    @include hexagon-text;
+  }
+  // margin-top: (-$centered-navigation-height);
+}
+
+li.nav-link.logo {
+  // display: inline-block !important;
+  min-width: $hexagon-size !important;
+  margin: auto $gutter;
+}
+
+li.nav-link {
+  text-align: center;
+  a {
+    margin: 0 auto;
+  }
 }
