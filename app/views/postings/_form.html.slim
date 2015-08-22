@@ -38,3 +38,7 @@
 
   fieldset.one-fourth.end.center
     =f.submit
+
+  - if posting.persisted?
+    fieldset.one-fourth.end.center
+      = link_to 'Delete Posting', posting_path(posting), method: :delete, class: 'button button-danger', confirm: 'Are you sure you would like to delete this posting? This cannot be undone.'

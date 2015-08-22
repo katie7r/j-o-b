@@ -17,7 +17,7 @@
   $button-group-inner-border: 1px solid lighten(silver, 18%);
   $button-group-background-checked: $action-color;
   $button-group-color-checked: white;
-  $button-group-border-checked: darken($button-group-background-checked, 15%);
+  $button-group-border-checked: darken($button-group-background-checked, 10%); // Previously 15%
 
   input {
     display: none;
@@ -87,7 +87,7 @@
     input:checked + .button-group-item {
       background: $button-group-background-checked;
       border: 1px solid $button-group-border-checked;
-      box-shadow: inset 0 1px 2px darken($button-group-background-checked, 10%);
+      box-shadow: inset 0 1px 2px darken($button-group-background-checked, 5%); // Previously 10%
       color: $button-group-color-checked;
     }
   }
@@ -95,6 +95,8 @@
 
 
 //* Centered Nav
+$centered-navigation-height: 60px;
+$centered-navigation-item-padding: 1em;
 
 .centered-navigation {
   $base-border-radius: 3px !default;
@@ -103,11 +105,11 @@
   $base-font-color: $dark-gray !default;
   $centered-navigation-padding: 1em;
   $centered-navigation-logo-height: 2em;
-  $centered-navigation-background: #E7F1EC;
+  $centered-navigation-background: lighten(desaturate($action-color, 50%), 25%); // Previously #E7F1EC
   $centered-navigation-color: transparentize($base-font-color, 0.3);
   $centered-navigation-color-hover: $base-font-color;
-  $centered-navigation-height: 60px;
-  $centered-navigation-item-padding: 1em;
+  // $centered-navigation-height: 60px;
+  // $centered-navigation-item-padding: 1em;
   $centered-navigation-submenu-padding: 1em;
   $centered-navigation-submenu-width: 12em;
   $centered-navigation-item-nudge: 2.2em;
@@ -572,10 +574,10 @@ html, body {
 
 .footer {
   $base-spacing: 1.5em !default;
-  $action-color: #477DCA !default;
+  // $action-color: #477DCA !default;
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
-  $footer-background: desaturate(darken($action-color, 20%), 30%);
+  $footer-background: darken(desaturate($action-color, 15%), 10%); // Previously desaturated (darkened 20%) 30%
   $footer-color: white;
   $footer-link-color: transparentize($footer-color, 0.6);
   $footer-disclaimer-color: transparentize($footer-color, 0.6);

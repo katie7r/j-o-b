@@ -20,11 +20,14 @@ $blue: #477dca;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
+$cerulean: #0088AA; // Added
+// $neptune: #72BFBF; // Added
+$stiletto: #A23232; // Added
 
 // Font Colors
 $base-background-color: #fff;
 $base-font-color: $dark-gray;
-$action-color: $blue;
+$action-color: $cerulean; // Added, previously $blue
 
 // Border
 $base-border-color: $light-gray;

@@ -62,3 +62,24 @@
     }
   }
 }
+
+
+//* Posting Show
+
+#posting-title {
+  margin-bottom: $gutter;
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 0;
+
+    small {
+      display: block;
+      font-size: 0.5em;
+    }
+  }
+
+  a.button {
+    margin-top: 0.75em;
+  }
+}

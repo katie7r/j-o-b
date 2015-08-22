@@ -1,4 +1,5 @@
 #{$all-button-inputs},
+a.button,
 button {
   @include appearance(none);
   -webkit-font-smoothing: antialiased;
@@ -20,7 +21,7 @@ button {
 
   &:hover,
   &:focus {
-    background-color: darken($action-color, 15%);
+    background-color: transparentize($action-color, 0.2); // Previously darkened 15%
     color: #fff;
   }
 
@@ -28,4 +29,13 @@ button {
     cursor: not-allowed;
     opacity: 0.5;
   }
+
+  &.button-danger {
+    background-color: $stiletto;
+    &:hover, &:focus {
+      background-color: transparentize($stiletto, 0.2);
+      color: #fff;
+    }
+  }
+
 }

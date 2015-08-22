@@ -1,32 +1,35 @@
-#posting.whole
-  h1
-    small = @posting.quickname if @posting.quickname
-    = link_to @posting.job_title, @posting.job_url, target: '_blank'
-    = typicon('at', '@')
-    = link_to_if @posting.company_url, @posting.company, @posting.company_url
+#posting
+  #posting-title.whole
+    h1.left
+      small = @posting.quickname if @posting.quickname
+      = link_to @posting.job_title, @posting.job_url, target: '_blank'
+      = typicon('at', '@')
+      = link_to_if @posting.company_url.present?, @posting.company, @posting.company_url
 
-fieldset.half
-  h3 Description
-  = markdown @posting.description
+    = link_to 'Edit Posting', edit_posting_path(@posting), class: 'button right'
 
-fieldset.one-fourth
-  h3 Remote or Local?
-  p = @posting.remote? ? 'Remote' : 'Local'
+  fieldset.half
+    h3 Description
+    = markdown @posting.description
 
-  h3 Full-Time or Part-Time?
-  p = @posting.full_time? ? 'Full-Time' : 'Part-Time'
+  fieldset.one-fourth
+    h3 Remote
+    p = yes_or_no @posting.remote?
 
-fieldset.important.one-fourth.end
-  h3 Priority
-  p.caps = @posting.priority
+    h3 Full-Time
+    p = yes_or_no @posting.full_time?
 
-  h3 Status
-  p.caps = @posting.status
+  fieldset.one-fourth.end
+    h3 Priority
+    p.caps = @posting.priority
 
-fieldset.whole
-  h3 Requirements
-  = markdown @posting.requirements
+    h3 Status
+    p.caps = @posting.status
 
-fieldset.whole
-  h3 Notes
-  = markdown @posting.notes
+  fieldset.half
+    h3 Requirements
+    = markdown @posting.requirements
+
+  fieldset.half.end
+    h3 Notes
+    = markdown @posting.notes
