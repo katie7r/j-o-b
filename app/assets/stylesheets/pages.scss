@@ -2,11 +2,14 @@
   text-align: center;
 
   h1 {
-    font-size: 5em;
+    font-size: 6em;
+    font-weight: 900;
+    margin: 0.5em auto 0.25em;
   }
 
   h2 {
-    font-size: 2.5em;
+    font-size: 2em;
+    font-style: italic;
     margin: $small-spacing auto;
 
     &:before, &:after {
@@ -16,8 +19,8 @@
     }
   }
 
-  .tagline {
-    margin: $base-spacing auto ($base-spacing * 1.5);
+  p.tagline {
+    margin: ($base-spacing * 2) auto;
   }
 
 }
