@@ -18,7 +18,7 @@ header.centered-navigation[role='banner']
             / = typicon('user', 'User')
             a[href='javascript:void(0)'] = current_user.email
             ul.submenu
-              li = link_to 'Edit Profile', edit_user_registration_path
+              li = link_to 'Edit Account', edit_user_registration_path
               li = link_to 'Sign Out', destroy_user_session_path, method: :delete
         -else
           li.nav-link = link_to 'Sign Up', new_user_registration_path
