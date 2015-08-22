@@ -1,0 +1,23 @@
+#jumbo {
+  text-align: center;
+
+  h1 {
+    font-size: 5em;
+  }
+
+  h2 {
+    font-size: 2.5em;
+    margin: $small-spacing auto;
+
+    &:before, &:after {
+      content: '-';
+      display: inline-block;
+      margin: auto 0.5em;
+    }
+  }
+
+  .tagline {
+    margin: $base-spacing auto ($base-spacing * 1.5);
+  }
+
+}

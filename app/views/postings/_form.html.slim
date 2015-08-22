@@ -28,6 +28,15 @@
     = f.text_area :notes
 
   fieldset.one-fourth.end
+    - boolean_options = [['Yes', true], ['No', false]]
+    span.clearfix
+      span.left
+        = f.label :remote
+        = f.select :remote, options_for_select(boolean_options, selected: posting.remote)
+      span.right
+        = f.label :full_time
+        = f.select :full_time, options_for_select(boolean_options, selected: posting.full_time)
+
     - priorities = Posting.priorities.keys.map{ |p| [p.titleize, p] }
     = f.label :priority
     = f.select :priority, options_for_select(priorities, selected: posting.priority)
@@ -36,9 +45,10 @@
     = f.label :status
     = f.select :status, options_for_select(statuses, selected: posting.status)
 
+
   fieldset.one-fourth.end.center
     =f.submit
 
   - if posting.persisted?
-    fieldset.one-fourth.end.center
+    .one-fourth.end.center
       = link_to 'Delete Posting', posting_path(posting), method: :delete, class: 'button button-danger', confirm: 'Are you sure you would like to delete this posting? This cannot be undone.'

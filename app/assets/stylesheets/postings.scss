@@ -13,14 +13,18 @@
 .flex-boxes {
   $flex-box-lighter-color: transparentize($flex-box-color, 0.1);
 
+  h2 {
+    min-height: 2em;
+  }
+
   h2, .markdown {
     color: $flex-box-lighter-color;
   }
 
   .stats {
-    border-bottom: 1px solid transparentize($base-font-color, 0.8);
-    // margin-bottom: $gutter;
-    padding-bottom: $gutter;
+    font-size: 0.725em;
+    @include margin(null -2em null -2em);
+    // TODO: fix it so priority/status and remote/full-time don't break or wrap
 
     span {
       color: $flex-box-color;
@@ -35,6 +39,8 @@
 
   .details {
     text-align: left;
+    margin-top: $gutter;
+    border-top: 1px solid transparentize($base-font-color, 0.8);
 
     h3, .expander .expander-trigger {
       color: $flex-box-color;

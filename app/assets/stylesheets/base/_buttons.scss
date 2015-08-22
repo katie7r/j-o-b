@@ -30,12 +30,21 @@ button {
     opacity: 0.5;
   }
 
+  // Added
   &.button-danger {
     background-color: $stiletto;
     &:hover, &:focus {
       background-color: transparentize($stiletto, 0.2);
       color: #fff;
     }
+  }
+
+  &.hero-button {
+    display: block;
+    margin: 0 auto;
+    padding: 1.5em 2em;
+    text-align: center;
+    width: 50%;
   }
 
 }

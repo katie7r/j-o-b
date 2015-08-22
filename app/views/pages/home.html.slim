@@ -1,3 +1,14 @@
-h1 WELCOME TO J.O.B.
+#jumbo
+  h1 J.O.B
+  h2 Job or Bust
 
-p Something fancy will eventually be here. Maybe. Someday.
+  p.tagline A web application that aims to make it easier - and perhaps even more enjoyable - to manage the job hunt.
+
+  p
+    - if current_user
+      = link_to 'Add a Job Posting', new_posting_path, class: 'button hero-button'
+      = link_to 'View Your Postings', postings_path
+
+    -else
+      = link_to 'Sign Up', new_user_registration_path, class: 'button hero-button'
+      = link_to 'Sign In', new_user_session_path

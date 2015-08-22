@@ -1,23 +1,9 @@
 footer.footer[role='contentinfo']
   .wrapper
-    .footer-logo
-      img[src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png' alt='Logo image']
+    p.left
+      | &copy; 2015 
+      a[href='http://katier.codes/' target='_blank'] Katie Russ
 
-      ul
-        li: a[href='#'] About
-        li: a[href='#'] Contact
-        li: a[href='#'] Products
-
-      .footer-secondary-links
-        ul
-          li: a[href='#'] Terms and Conditions
-          li: a[href='#'] Privacy Policy
-
-
-        ul.footer-social
-          li: a[href='#']
-            img[src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/facebook-logo-circle.png' alt='Facebook']
-          li: a[href='#']
-            img[src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/twitter-logo-circle.png' alt='Twitter']
-          li: a[href='#']
-            img[src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/youtube-logo-circle.png' alt='YouTube']
+    p.right
+      | Comments? Suggestions? 
+      a = email_me

@@ -25,7 +25,18 @@ module ApplicationHelper
     return typcn.html_safe
   end
 
+  # Returns 'yes' or 'no' if condition is true or false, respectively
   def yes_or_no(condition)
     condition ? 'Yes' : 'No'
+  end
+
+  # TODO: figure out a not-temp logo
+  def temp_logo
+    "<span class='hug'>{</span><span>JoB</span><span class='hug'>}</span>".html_safe
+  end
+
+  # Outputs email address with fool-proof bot-proofing
+  def email_me
+    "katier.codes<span class='hidden'>shhhh</span>@gmail.com".html_safe
   end
 end

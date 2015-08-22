@@ -105,7 +105,7 @@ $centered-navigation-item-padding: 1em;
   $base-font-color: $dark-gray !default;
   $centered-navigation-padding: 1em;
   $centered-navigation-logo-height: 2em;
-  $centered-navigation-background: lighten(desaturate($action-color, 50%), 25%); // Previously #E7F1EC
+  $centered-navigation-background: lighten(desaturate($action-color, 60%), 30%); // Previously #E7F1EC
   $centered-navigation-color: transparentize($base-font-color, 0.3);
   $centered-navigation-color-hover: $base-font-color;
   // $centered-navigation-height: 60px;
@@ -614,9 +614,13 @@ html, body {
     }
   }
 
-  ul li {
+  ul li, p { // Added p
     list-style: none;
     padding-right: 1em;
+
+
+    font-size: 0.8em; // Added
+    color: $footer-link-color; // Added
 
     @include media($large-screen) {
       display: inline;
@@ -624,13 +628,13 @@ html, body {
     }
   }
 
-  ul li a {
-    color: $footer-link-color;
+  ul li a, p a { // Added p a
+    color: transparentize($footer-color, 0); // Previously $footer-link-color
     text-decoration: none;
 
     &:focus,
     &:hover {
-      color: transparentize($footer-color, 0);
+      color: $footer-link-color; // Previously transparentize($footer-color, 0)
     }
   }
 
