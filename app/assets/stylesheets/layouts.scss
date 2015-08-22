@@ -44,10 +44,6 @@
   margin-top: $small-spacing;
 }
 
-//* Badgery
-
-// TODO: friday
-
 //* Misc/Utility
 // TODO: move somewhere that makes more sense
 
@@ -205,3 +201,24 @@ li.nav-link {
     margin: 0 auto;
   }
 }
+
+footer .contact > span {
+  display: inline-block;
+  margin: auto 0.5em;
+}
+
+//* Body texture
+
+$texture-top-background: lighten(tint($action-color, 30%), 45%); //lighten(#ddf0ef, 1%);
+$texture-bottom-background: $base-background-color; //darken(#ddf0ef, 10%);
+
+.texture {
+  // gradient angle, gradient color 1, gradient color 2, texture-number, 0=inverted or 1=normal
+  @include texture(180deg, $texture-top-background, $texture-bottom-background, 77, 1);
+}
+
+fieldset {
+  background-color: darken($base-background-color, 5%);
+}
+
+// TODO: seriously clean up/refactor/prune all of the stylesheets

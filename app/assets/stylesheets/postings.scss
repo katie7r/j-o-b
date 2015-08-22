@@ -11,7 +11,7 @@
 //* Flex Boxes
 
 .flex-boxes {
-  $flex-box-lighter-color: transparentize($flex-box-color, 0.1);
+  $flex-box-lighter-color: lighten($flex-box-color, 10%);
 
   h2 {
     min-height: 2em;

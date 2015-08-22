@@ -4,6 +4,10 @@ footer.footer[role='contentinfo']
       | &copy; 2015 
       a[href='http://katier.codes/' target='_blank'] Katie Russ
 
-    p.right
-      | Comments? Suggestions? 
+    p.contact.right
+      span> Comments? Suggestions?
       a = email_me
+      span<> or
+      = link_to 'https://twitter.com/katie_k7r', target: '_blank' do
+        = typicon 'social-twitter', 'Twitter'
+        | katie_k7r

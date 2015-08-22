@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   private
 
   def record_not_found
-    standard_rescue_with 'Record could not be found.'
+    standard_rescue_with 'Record could not be found.', 'error'
   end
 
   def user_not_authorized
@@ -24,5 +24,5 @@ class ApplicationController < ActionController::Base
     redirect_to(request.referrer || root_path)
   end
 
-  # TODO: figure out how I'm actually supposed to do this
+  # TODO: figure out how I'm actually supposed to do this (the right way)
 end
