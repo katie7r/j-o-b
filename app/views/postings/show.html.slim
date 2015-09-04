@@ -4,7 +4,7 @@
       small = @posting.quickname if @posting.quickname
       = link_to @posting.job_title, @posting.job_url, target: '_blank'
       = typicon('at', '@')
-      = link_to_if @posting.company_url.present?, @posting.company, @posting.company_url
+      = link_to_if @posting.company_url.present?, @posting.company, @posting.company_url, target: '_blank'
 
     = link_to 'Edit Posting', edit_posting_path(@posting), class: 'button right'
 
