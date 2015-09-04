@@ -20,6 +20,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the A
 
 gem 'autoprefixer-rails'
 gem 'devise'
+gem 'faker'
 gem 'high_voltage', '~> 2.4.0'
 gem 'pundit'
 gem 'redcarpet'
