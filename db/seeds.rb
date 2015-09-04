@@ -4,7 +4,7 @@ end
 
 def description
   d = ''
-  rand(2..10).times{ d += "- #{Faker::Lorem.sentence}" }
+  rand(2..10).times{ d += "- #{Faker::Lorem.sentence}\n" }
   return d
 end
 
