@@ -1,4 +1,5 @@
-.flex-box.posting[data-priority=posting.priority data-remote-local="#{posting.remote}" data-status=posting.status data-full-time="#{posting.full_time}"]
+- flex_color = posting.closed? ? 'grey' : posting.id % 7 + 1
+.flex-box.posting[class="flex-#{flex_color}" data-priority=posting.priority data-remote-local="#{posting.remote}" data-status=posting.status data-full-time="#{posting.full_time}"]
   = link_to posting do
     / img[src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1_dark.png" alt=""]
     h1.flex-title = posting.quickname

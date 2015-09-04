@@ -470,6 +470,15 @@ $centered-navigation-item-padding: 1em;
 $dark-gray: #333 !default;
 $flex-box-color: transparentize($base-font-color, 0.3);
 
+@mixin flex-top($color) {
+  border-top: 6px solid $color;
+
+  &:focus,
+  &:hover {
+    background-color: tint($color, 85%); // Previously transparentize($color-from-list, 0.9)
+  }
+}
+
 .flex-boxes {
   $base-border-radius: 3px !default;
   $base-background-color: white !default;
@@ -483,12 +492,14 @@ $flex-box-color: transparentize($base-font-color, 0.3);
   $flex-box-width: 18em;
   // $flex-box-color: transparentize($base-font-color, 0.3);
   $flex-box-top-colors:
-    tomato,
+    #FF6347,
+    #FAB05C,
+    #E3D743,
+    #ABEE77,
     #72BFBF,
     #92B1E3,
-    #E3D743,
-    #CCC,
-    #F6C05C;
+    #AE809E;
+    // #CCC
 
     @include clearfix;
     @include display(flex);
@@ -510,17 +521,24 @@ $flex-box-color: transparentize($base-font-color, 0.3);
     padding: 2em 2em 3em 2em;
     text-decoration: none;
 
-    @for $i from 1 to 7 { // assign colors from $flex-box-top-colors list
-      &:nth-child(#{$i}) {
-        $color-from-list: nth($flex-box-top-colors, $i);
-        border-top: 6px solid $color-from-list;
-
-        &:focus,
-        &:hover {
-          background-color: tint($color-from-list, 85%); // Previously transparentize($color-from-list, 0.9)
-        }
+    @for $i from 1 to 8 { // assign colors from $flex-box-top-colors list
+      &.flex-#{$i} {
+        @include flex-top(nth($flex-box-top-colors, $i));
       }
+      // &:nth-child(#{$i}) {
+      //   $color-from-list: nth($flex-box-top-colors, $i);
+      //   border-top: 6px solid $color-from-list;
+      //
+      //   &:focus,
+      //   &:hover {
+      //     background-color: tint($color-from-list, 85%); // Previously transparentize($color-from-list, 0.9)
+      //   }
+      // }
     }
+    &.flex-grey {
+      @include flex-top(#CCC);
+    }
+
 
     img {
       display: block;

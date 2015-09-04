@@ -80,6 +80,14 @@ class Posting < ActiveRecord::Base
 
   # Misc
 
+  # def self.unclosed
+  #   where.not(status: 'closed')
+  # end
+
+  def closed?
+    status == 'closed'
+  end
+
   # ?
   def self.priorities_at_least(priority)
     minimum_priority  = self.priorities[priority]
