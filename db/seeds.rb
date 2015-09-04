@@ -4,7 +4,7 @@ end
 
 def description
   d = ''
-  rand(10).times{ d += "- #{Faker::Lorem.sentence}" }
+  rand(2..10).times{ d += "- #{Faker::Lorem.sentence}" }
   return d
 end
 
@@ -14,13 +14,16 @@ user.save!
 
 postings = []
 15.times do
+  quickname_color = coin_flip ? "#{Faker::Commerce.color.titleize} " : ''
+  company_noun    = coin_flip ? "#{Faker::Hacker.noun.titleize}-"    : ''
+
   posting = {}
 
   posting[:user_id]      = user.id
-  posting[:quickname]    = Faker::App.name
+  posting[:quickname]    = "#{quickname_color}#{Faker::App.name}"
   posting[:job_title]    = "#{Faker::Company.buzzword} #{Faker::Hacker.verb}er".titleize
   posting[:job_url]      = Faker::Internet.url
-  posting[:company]      = "#{Faker::Hacker.noun.titleize}-#{Faker::Hacker.ingverb.titleize} #{Faker::Team.creature.titleize}"
+  posting[:company]      = company_noun + "#{Faker::Hacker.ingverb} #{Faker::Team.creature}".titleize
   posting[:company_url]  = Faker::Internet.url
   posting[:description]  = coin_flip ? description : ''
   posting[:requirements] = coin_flip ? Faker::Lorem.sentence  : ''
