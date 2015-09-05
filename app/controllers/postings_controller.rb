@@ -3,7 +3,7 @@ class PostingsController < ApplicationController
   before_filter :authorize_posting, only: [:index, :new, :create]
 
   def index
-    @postings = policy_scope(Posting)
+    @postings = policy_scope(Posting).ordered
   end
 
   def show
