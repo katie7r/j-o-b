@@ -22,7 +22,6 @@ h1 Edit Account
     = f.label :current_password, label_tip('Current password', 'to confirm changes')
     = f.password_field :current_password, autocomplete: 'off'
  
-
   .actions = f.submit 'Update'
 
-= link_to 'Back', :back
+  .action-links = link_to 'Back', :back

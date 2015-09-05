@@ -19,13 +19,13 @@
 
   fieldset.three-fourths
     = f.label :description, label_tip('Description', 'allows markdown')
-    = f.text_area :description
+    = f.text_area :description, rows: 5
 
     = f.label :requirements, label_tip('Requirements', 'allows markdown')
-    = f.text_area :requirements
+    = f.text_area :requirements, rows: 3
 
     = f.label :notes, label_tip('Notes', 'allows markdown')
-    = f.text_area :notes
+    = f.text_area :notes, rows: 3
 
   fieldset.one-fourth.end
     - boolean_options = [['Yes', true], ['No', false]]
@@ -45,6 +45,7 @@
     = f.label :status, label_tip('Status')
     = f.select :status, options_for_select(statuses, selected: posting.status)
 
+  fieldset.one-fourth.end
     .center
       = f.submit
 
