@@ -6,7 +6,6 @@ gem 'pg'
 gem 'thin'
 
 gem 'sass-rails', '~> 5.0'
-# gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bourbon'
 gem 'neat'
 
@@ -27,6 +26,7 @@ gem 'redcarpet'
 gem 'slim-rails'
 
 group :production do
+  gem 'newrelic_rpm'
   gem 'rails_12factor'
 end
 
