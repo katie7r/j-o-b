@@ -124,6 +124,7 @@ $centered-navigation-submenu-padding: 1em;
   // Mobile view
 
   .mobile-logo {
+    color: $centered-navigation-color; // Added
     margin-top: $centered-navigation-padding / 2; // Added
     display: inline;
     float: left;
@@ -403,9 +404,18 @@ $centered-navigation-submenu-padding: 1em;
     }
   }
 
+  .expander-content { // Added
+    border-bottom: 1px solid $light-gray;
+    margin-bottom: $expander-toggle-size;
+    @include clearfix();
+  }
+
   .expander-content p {
     color: $base-font-color;
     line-height: $base-line-height;
+    &.note {
+      color: gray; // Added
+    }
   }
 
   .expander-hidden {

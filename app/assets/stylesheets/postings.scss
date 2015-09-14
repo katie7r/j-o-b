@@ -3,7 +3,7 @@
 #posting-filters {
   @include fill-parent();
 
-  .whole, .half, .two-thirds, .one-third, .three-fourths, .one-fourth {
+  .note, .whole, .half, .two-thirds, .one-third, .three-fourths, .one-fourth {
     margin-bottom: $gutter;
   }
 }
