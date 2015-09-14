@@ -190,6 +190,10 @@
 //   // margin-top: (-$centered-navigation-height);
 // }
 
+#js-centered-navigation-menu li > a {
+  margin-right: $centered-navigation-submenu-padding; // Added
+}
+
 li.nav-link.logo {
   // display: inline-block !important;
   // min-width: $hexagon-size !important;
