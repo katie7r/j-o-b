@@ -2,8 +2,12 @@
 <html lang='en-us'>
 <head>
   <meta charset='utf-8'>
-  <title>J.o.B. - Job or Bust</title>
+  <title>Job or Bust</title>
   <meta name='description' content='A web application that aims to make it easier - and perhaps even more enjoyable - to manage the job hunt.'>
+
+  <link rel='shortcut icon' type='image/png' href='<%= asset_path 'favicon.png' %>'/>
+  <link rel='shortcut icon' type='image/png' href='<%= asset_url 'favicon.png' %>'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

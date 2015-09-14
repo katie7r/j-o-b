@@ -31,6 +31,6 @@
           - if content.present?
             a.expander-trigger.expander-hidden = category_title
             .expander-content
-              fieldset = markdown content
+              fieldset: small = markdown content
           - else
             .expander-trigger.null = "#{category_title} (none)"
