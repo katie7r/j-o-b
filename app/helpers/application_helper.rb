@@ -30,6 +30,11 @@ module ApplicationHelper
     condition ? 'Yes' : 'No'
   end
 
+  def label_tip(label, tip = false)
+    tip_text = tip ? "(#{tip})" : '*'
+    "#{label} <small><em>#{tip_text}</em></small>".html_safe
+  end
+
   # TODO: figure out a not-temp logo
   def temp_logo
     "<span class='hug'>{</span><span>JoB</span><span class='hug'>}</span>".html_safe

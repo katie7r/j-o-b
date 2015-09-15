@@ -3,7 +3,7 @@
 #posting-filters {
   @include fill-parent();
 
-  .whole, .half, .two-thirds, .one-third, .three-fourths, .one-fourth {
+  .note, .whole, .half, .two-thirds, .one-third, .three-fourths, .one-fourth {
     margin-bottom: $gutter;
   }
 }
@@ -87,5 +87,13 @@
 
   a.button {
     margin-top: 0.75em;
+  }
+}
+
+//* Posting Form
+
+fieldset .center {
+  input, .button {
+    margin-top: 1em;
   }
 }

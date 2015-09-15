@@ -60,10 +60,6 @@
 }
 
 .center {
-  width: auto;
-  float: left;
-  display: block;
-  margin: 0 auto;
   text-align: center;
 }
 
@@ -98,6 +94,25 @@
 
 .hidden {
   display: none;
+}
+
+.actions {
+  float: left;
+}
+
+.action-links {
+  float: right;
+  padding-top: 1em;
+  li {
+    display: inline-block;
+    &:after {
+      content: ' | ';
+    }
+
+    &:last-child:after {
+      content: '';
+    }
+  }
 }
 
 // @mixin hexagon($color, $size) {
@@ -175,13 +190,17 @@
 //   // margin-top: (-$centered-navigation-height);
 // }
 
+#js-centered-navigation-menu li > a {
+  margin-right: $centered-navigation-submenu-padding; // Added
+}
+
 li.nav-link.logo {
   // display: inline-block !important;
   // min-width: $hexagon-size !important;
   margin: auto $gutter;
 }
 
-.logo {
+.logo, .mobile-logo {
   span {
     font-size: 1.4em;
     font-weight: 900;

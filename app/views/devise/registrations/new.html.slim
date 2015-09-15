@@ -8,10 +8,8 @@ h1 Sign Up
     = f.email_field :email, autofocus: true
 
   fieldset
-    = f.label :password do
-      | Password
-      - if @minimum_password_length
-        small<: em = "(#{@minimum_password_length} characters minimum)"
+    - password_tip = @minimum_password_length ? "#{@minimum_password_length} characters minimum" : ''
+    = f.label :password, label_tip('Password', password_tip)
     = f.password_field :password, autocomplete: 'off'
   
     = f.label :password_confirmation

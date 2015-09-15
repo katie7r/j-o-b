@@ -11,9 +11,7 @@ h1 Edit Account
       = "Currently waiting confirmation for: #{resource.unconfirmed_email}"
 
   fieldset
-    = f.label :password do
-      | New password
-      small<: em = '(only required to change password)'
+    = f.label :password, label_tip('New password', 'only required to change password')
     = f.password_field :password, autocomplete: 'off'
 
     = f.label :password_confirmation, 'New password confirmation'
@@ -21,12 +19,9 @@ h1 Edit Account
  
 
   fieldset
-    = f.label :current_password do
-      | Current password
-      small<: em = '(to confirm changes)'
+    = f.label :current_password, label_tip('Current password', 'to confirm changes')
     = f.password_field :current_password, autocomplete: 'off'
  
-
   .actions = f.submit 'Update'
 
-= link_to 'Back', :back
+  .action-links = link_to 'Back', :back

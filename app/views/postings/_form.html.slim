@@ -4,10 +4,10 @@
     = f.text_field :quickname
 
   fieldset.half
-    = f.label :job_title
+    = f.label :job_title, label_tip('Job title')
     = f.text_field :job_title, required: true
 
-    = f.label :job_url
+    = f.label :job_url, label_tip('Job url')
     = f.text_field :job_url, required: true
 
   fieldset.half.end
@@ -18,37 +18,39 @@
     = f.text_field :company_url
 
   fieldset.three-fourths
-    = f.label :description
-    = f.text_area :description
+    = f.label :description, label_tip('Description', 'allows markdown')
+    = f.text_area :description, rows: 5
 
-    = f.label :requirements
-    = f.text_area :requirements
+    = f.label :requirements, label_tip('Requirements', 'allows markdown')
+    = f.text_area :requirements, rows: 3
 
-    = f.label :notes
-    = f.text_area :notes
+    = f.label :notes, label_tip('Notes', 'allows markdown')
+    = f.text_area :notes, rows: 3
 
   fieldset.one-fourth.end
     - boolean_options = [['Yes', true], ['No', false]]
     span.clearfix
       span.left
-        = f.label :remote
+        = f.label :remote, label_tip('Remote')
         = f.select :remote, options_for_select(boolean_options, selected: posting.remote)
       span.right
-        = f.label :full_time
+        = f.label :full_time, label_tip('Full-time')
         = f.select :full_time, options_for_select(boolean_options, selected: posting.full_time)
 
     - priorities = Posting.priorities.keys.map{ |p| [p.titleize, p] }
-    = f.label :priority
+    = f.label :priority, label_tip('Priority')
     = f.select :priority, options_for_select(priorities, selected: posting.priority)
 
     - statuses = Posting.statuses.keys.map{ |s| [s.titleize, s] }
-    = f.label :status
+    = f.label :status, label_tip('Status')
     = f.select :status, options_for_select(statuses, selected: posting.status)
 
+  fieldset.one-fourth.end
+    .center
+      = f.submit
 
-  fieldset.one-fourth.end.center
-    =f.submit
+      - if posting.persisted?
+        = link_to 'Delete Posting', posting_path(posting), class: 'button button-danger', method: :delete, 'data-confirm' => 'Are you sure you would like to delete this posting? This cannot be undone.'
 
-  - if posting.persisted?
-    .one-fourth.end.center
-      = link_to 'Delete Posting', posting_path(posting), method: :delete, class: 'button button-danger', confirm: 'Are you sure you would like to delete this posting? This cannot be undone.'
+  .one-fourth.end.center
+    = link_to 'Cancel Changes', :back, 'data-confirm' => 'Are you sure you would like to leave this page? Any unsaved changes will be lost.'

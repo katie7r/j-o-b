@@ -30,6 +30,10 @@ class Posting < ActiveRecord::Base
 
   # Sorting
 
+  def self.ordered
+    order('priority DESC, status DESC, created_at DESC')
+  end
+
   def self.by_priority
     order('priority DESC')
   end
@@ -79,6 +83,10 @@ class Posting < ActiveRecord::Base
   # end
 
   # Misc
+
+  def closed?
+    status == 'closed'
+  end
 
   # ?
   def self.priorities_at_least(priority)

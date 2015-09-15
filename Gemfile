@@ -6,7 +6,6 @@ gem 'pg'
 gem 'thin'
 
 gem 'sass-rails', '~> 5.0'
-# gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bourbon'
 gem 'neat'
 
@@ -20,12 +19,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the A
 
 gem 'autoprefixer-rails'
 gem 'devise'
+gem 'faker'
 gem 'high_voltage', '~> 2.4.0'
 gem 'pundit'
 gem 'redcarpet'
 gem 'slim-rails'
 
 group :production do
+  gem 'newrelic_rpm'
   gem 'rails_12factor'
 end
 

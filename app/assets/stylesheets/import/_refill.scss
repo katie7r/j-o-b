@@ -97,6 +97,7 @@
 //* Centered Nav
 $centered-navigation-height: 60px;
 $centered-navigation-item-padding: 1em;
+$centered-navigation-submenu-padding: 1em;
 
 .centered-navigation {
   $base-border-radius: 3px !default;
@@ -110,7 +111,6 @@ $centered-navigation-item-padding: 1em;
   $centered-navigation-color-hover: $base-font-color;
   // $centered-navigation-height: 60px;
   // $centered-navigation-item-padding: 1em;
-  $centered-navigation-submenu-padding: 1em;
   $centered-navigation-submenu-width: 12em;
   $centered-navigation-item-nudge: 2.2em;
   $horizontal-bar-mode: $large-screen;
@@ -124,6 +124,8 @@ $centered-navigation-item-padding: 1em;
   // Mobile view
 
   .mobile-logo {
+    color: $centered-navigation-color; // Added
+    margin-top: $centered-navigation-padding / 2; // Added
     display: inline;
     float: left;
     max-height: $centered-navigation-height;
@@ -223,6 +225,10 @@ $centered-navigation-item-padding: 1em;
       background: transparent;
       display: inline;
       line-height: $centered-navigation-height;
+
+      &:first-of-type {
+        margin-left: -$centered-navigation-item-padding; // Added
+      }
 
       a {
         padding-right: $centered-navigation-item-padding;
@@ -398,9 +404,18 @@ $centered-navigation-item-padding: 1em;
     }
   }
 
+  .expander-content { // Added
+    border-bottom: 1px solid $light-gray;
+    margin-bottom: $expander-toggle-size;
+    @include clearfix();
+  }
+
   .expander-content p {
     color: $base-font-color;
     line-height: $base-line-height;
+    &.note {
+      color: gray; // Added
+    }
   }
 
   .expander-hidden {
@@ -470,6 +485,15 @@ $centered-navigation-item-padding: 1em;
 $dark-gray: #333 !default;
 $flex-box-color: transparentize($base-font-color, 0.3);
 
+@mixin flex-top($color) {
+  border-top: 6px solid $color;
+
+  &:focus,
+  &:hover {
+    background-color: tint($color, 85%); // Previously transparentize($color-from-list, 0.9)
+  }
+}
+
 .flex-boxes {
   $base-border-radius: 3px !default;
   $base-background-color: white !default;
@@ -483,12 +507,14 @@ $flex-box-color: transparentize($base-font-color, 0.3);
   $flex-box-width: 18em;
   // $flex-box-color: transparentize($base-font-color, 0.3);
   $flex-box-top-colors:
-    tomato,
+    #FF6347,
+    #FAB05C,
+    #E3D743,
+    #ABEE77,
     #72BFBF,
     #92B1E3,
-    #E3D743,
-    #CCC,
-    #F6C05C;
+    #AE809E;
+    // #CCC
 
     @include clearfix;
     @include display(flex);
@@ -510,17 +536,24 @@ $flex-box-color: transparentize($base-font-color, 0.3);
     padding: 2em 2em 3em 2em;
     text-decoration: none;
 
-    @for $i from 1 to 7 { // assign colors from $flex-box-top-colors list
-      &:nth-child(#{$i}) {
-        $color-from-list: nth($flex-box-top-colors, $i);
-        border-top: 6px solid $color-from-list;
-
-        &:focus,
-        &:hover {
-          background-color: tint($color-from-list, 85%); // Previously transparentize($color-from-list, 0.9)
-        }
+    @for $i from 1 to 8 { // assign colors from $flex-box-top-colors list
+      &.flex-#{$i} {
+        @include flex-top(nth($flex-box-top-colors, $i));
       }
+      // &:nth-child(#{$i}) {
+      //   $color-from-list: nth($flex-box-top-colors, $i);
+      //   border-top: 6px solid $color-from-list;
+      //
+      //   &:focus,
+      //   &:hover {
+      //     background-color: tint($color-from-list, 85%); // Previously transparentize($color-from-list, 0.9)
+      //   }
+      // }
     }
+    &.flex-grey {
+      @include flex-top(#CCC);
+    }
+
 
     img {
       display: block;

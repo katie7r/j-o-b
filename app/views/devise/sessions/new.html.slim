@@ -13,6 +13,7 @@ h1 Sign In
       = f.check_box :remember_me
       | Remember me
 
-  .actions = f.submit 'Sign In'
+  .actions
+    = f.submit 'Sign In'
 
 = render 'devise/shared/links'
